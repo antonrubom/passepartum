@@ -1,0 +1,26 @@
+{
+    "name": "passepartum",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "description": "The extension facilitates (automates) the login process of the moodle page of the Technical University of Munich.",
+    "options_page": "./srcOptions/options.html",
+    "icons": {
+      "128": "./icons/icons8-schlussel-128.png"
+    },
+    "content_scripts": [{
+            "matches": ["https://www.moodle.tum.de/login/index.php", "https://www.moodle.tum.de/"],
+            "js": ["passMoodleWelcome.js"]
+        },
+        {
+            "matches": ["https://login.tum.de/*"],
+            "js": ["loginShibboleth.js"]
+        }
+    ],
+    "action": {
+        "default_popup": "./srcPopup/popup.html",
+        "default_title": "User Input"
+    },
+    "permissions": [
+        "storage"
+    ]
+}
